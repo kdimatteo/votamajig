@@ -1,0 +1,30 @@
+<div {{bind-attr class=":status__container :card :green :lighten-3 isVoted:hidden:visible"}}>
+  <div class="card-content">
+    <div class="card-title">No Votes Yet</div>
+    <h1> </h1>
+  </div>
+</div>
+
+<div {{bind-attr class=":status__container :card :green :darken-3 isVoted:visible:hidden"}}>
+  <div class="card-content white-text">
+    <div class="card-title darken-1">Average</div>
+    <h1>{{averageVoteValue}}</h1>
+    <span class="badge green darken-4 white-text">{{numVotes}} votes collected.</span>
+    </div>
+</div>
+
+
+<p>
+  <label for="voteValue">Enter Your Vote</label>
+  {{input type=text value=voteValue id="voteValue"}}
+  <button class="btn waves-effect green darken-3 waves-light" type="submit" {{action 'sendVote'}}>Submit <i class="mdi-content-send"></i></button>
+  
+  <div {{bind-attr class=":bogus__submission :red :white-text isBogus:visible:hidden"}}>
+    <h6><i class="mdi-alert-warning"></i>BOGUS SUBMISSION</h6>
+  </div>
+</p>
+
+<div class="card reset__container">
+<p>This is not undoable.</p>
+<p><button class="btn waves-effect waves-light red" {{action 'resetVotes'}}><i class="mdi-alert-warning"></i> reset</button></p>
+</div>

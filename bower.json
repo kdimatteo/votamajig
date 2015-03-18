@@ -12,6 +12,17 @@
     "ember-load-initializers": "stefanpenner/ember-load-initializers#0.0.2",
     "ember-qunit": "0.1.8",
     "ember-qunit-notifications": "0.0.4",
-    "qunit": "~1.15.0"
+    "qunit": "~1.15.0",
+    "socket.io-client": "~1.3.5",
+    "hammerjs": "~2.0.4",
+    "materialize": "~0.95.0"
+  },
+  "resolutions": {
+    "jquery": "^1.11.1",
+    "ember": "1.7.0",
+    "socket.io-client": "~1.3.5"
+  },
+  "devDependencies": {
+    "ember-sockets": "~0.6.10"
   }
 }

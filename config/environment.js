@@ -2,6 +2,11 @@
 
 module.exports = function(environment) {
   var ENV = {
+    contentSecurityPolicy: {
+      'connect-src': "'self' *",
+      'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
+      'style-src': "'self' 'unsafe-inline'",
+    },
     modulePrefix: 'votamajig',
     environment: environment,
     baseURL: '/',
