@@ -1,6 +1,14 @@
 /* global require, module */
 
-var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+var EmberApp   = require('ember-cli/lib/broccoli/ember-app');
+var Funnel     = require('broccoli-funnel');
+var mergeTrees = require('broccoli-merge-trees');
+
+
+var nodeFiles = new Funnel('./', {
+  include : ['socket-server.js', 'static-server.js', 'package.json', 'Procfile'],
+});
+
 
 var app = new EmberApp();
 
@@ -20,4 +28,4 @@ app.import('bower_components/socket.io-client/socket.io.js');
 app.import('bower_components/ember-sockets/dist/ember-sockets.js');
 app.import('bower_components/materialize/dist/css/materialize.css');
 
-module.exports = app.toTree();
+module.exports = mergeTrees([nodeFiles, app.toTree()]);
