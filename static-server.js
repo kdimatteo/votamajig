@@ -1,13 +1,13 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-//var path = require('path');
+var path = require('path');
 
 var app = express();
 
 //app.configure(function(){
     app.use(bodyParser());
     app.use(express.static(__dirname));
-    //app.use(express.static(path.join(__dirname, 'dist')));
+    app.use(express.static(path.join(__dirname, 'dist')));
 //});
 
 var port = process.env.PORT || 5000;
@@ -15,3 +15,14 @@ var port = process.env.PORT || 5000;
 app.listen(port);
 
 console.log('server started '+port);
+
+// smaller version:
+// var express     = require('express');
+// var serveStatic = require('serve-static');
+ 
+// var fileHandler = serveStatic('.', {'index': ['index.html']});
+
+// express() .
+// use( fileHandler ) .
+// listen(3000);
+// console.log('Server running at http://localhost:3000');
