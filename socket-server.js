@@ -5,11 +5,13 @@ var _     = require('underscore');
 //io.set('origins', '*localhost:4200 localhost:*');
 io.set('origins', '*:*');
 
-var allVotes = [];
-var allVoterIds = [];
+var numConnections  = 0;
+var allVotes        = [];
+var allVoterIds     = [];
 
 io.on('connection', function(socket) {
   console.log('connection: ', socket.conn.id);
+  numConnections ++;
 
   //io.emit('public', { will: 'be received by everyone'});
   /*
@@ -39,7 +41,7 @@ io.on('connection', function(socket) {
       a = math.mean(allVotes);
     }
     
-    console.log(this.conn.id)
+    console.log(this.conn.id + " sent " + voteValue);
     io.emit('onAverageVotes', a, allVotes.length);
   });
 
@@ -48,8 +50,15 @@ io.on('connection', function(socket) {
     allVoterIds.length = 0;
     allVotes.length = 0;
     io.emit('onResetVotes');
-  })
+  });
 
+  socket.on('getNumConnections', function(){
+    io.emit('onGetNumConnections', numConnections);
+  });
+
+  socket.on('disconnect', function(){
+    numConnections--;
+  });
 
 });
 

@@ -2,10 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
-  isBogus: false,
-  numVotes: 0,
-
-  isVoted: Ember.computed.gt('numVotes', 0),
+  isBogus:        false,
+  numVotes:       0,
+  numConnections: 0,
+  isVoted:        Ember.computed.gt('numVotes', 0),
 
   actions: {
     sendVote: function() {
@@ -17,6 +17,10 @@ export default Ember.Controller.extend({
     },
   },
 
+  getConnections: function(){
+    this.socket.emit('getNumConnections');
+  }.on('init'),
+
   sockets: {
     //cherryPickedName: ['name', 'age'],
     ////OR
@@ -25,6 +29,10 @@ export default Ember.Controller.extend({
     //   this.set('name', name);
     //   this.set('age', age);
     // },
+
+    onGetNumConnections: function(n){
+      this.set('numConnections', n);
+    },
 
     onResetVotes: function() {
       this.set('isBogus', false);
