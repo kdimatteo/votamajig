@@ -9,10 +9,9 @@
   <div class="card-content white-text">
     <div class="card-title darken-1">Average</div>
     <h1>{{averageVoteValue}}</h1>
-    <span class="badge green darken-4 white-text">{{numVotes}} votes collected.</span>
-    </div>
+    <span class="badge green darken-4 white-text">{{numVotes}} collected.</span>
+  </div>
 </div>
-
 
 <p>
   <label for="voteValue">Enter Your Vote</label>
@@ -28,3 +27,5 @@
 <p>This is not undoable.</p>
 <p><button class="btn waves-effect waves-light red" {{action 'resetVotes'}}><i class="mdi-alert-warning"></i> reset</button></p>
 </div>
+
+<p>{{numConnections}} are people connected.</p>
